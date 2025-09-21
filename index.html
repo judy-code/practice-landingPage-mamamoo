@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAMAMOO</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 引入 TailwindCSS 官方 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/music-card-style.css">
+</head>
+
+<body>
+    <div class="page mx-auto">
+        <!-- Header -->
+        <header class="bg-black fixed top-0 right-0 left-0 z-10">
+            <!-- Desktop Nav -->
+            <div class="flex justify-between items-center mx-auto max-w-[1440px]">
+                <nav id="desktop-nav" class="hidden w-full md:flex justify-between items-center space-x-6 px-20 py-5">
+                    <a class="font-bold" href="#news">最新消息</a>
+                    <a class="font-bold" href="#product">暢銷商品</a>
+                    <a class="font-bold" href="#members">成員簡介</a>
+                    <a class="font-bold" href="#music">暢銷歌曲</a>
+                    <a class="font-bold" href="#email">電子報</a>
+                </nav>
+            </div>
+            <!-- Mobile Nav -->
+            <div id="mobile-nav" class="relative md:hidden">
+                <!-- Mobile Logo + Hamburger -->
+                <div class="flex justify-between items-center w-full px-4 sm:px-10 py-5">
+                    <div class="logo">
+                        <img class="max-h-[20px]" src="assets/images/logo.png" alt="Logo">
+                    </div>
+                    <button id="hamburger" class="flex justify-center items-center">
+                        <!-- 漢堡 icon -->
+                        <svg id="icon-bars" xmlns="http://www.w3.org/2000/svg" class="block w-5 h-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+                        </svg>
+
+                        <!-- 叉叉 icon -->
+                        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden w-5 h-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+                        </svg>
+                    </button>
+
+                </div>
+                <!-- Mobile Menu (absolute under nav) -->
+                <div id="mobile-menu" class="h-screen absolute top-full left-0 right-0 hidden shadow-md z-10">
+                    <a href="#news" class="block font-bold px-4 sm:px-10 py-5">最新消息</a>
+                    <a href="#product" class="block font-bold px-4 sm:px-10 py-5">暢銷商品</a>
+                    <a href="#members" class="block font-bold px-4 sm:px-10 py-5">成員簡介</a>
+                    <a href="#music" class="block font-bold px-4 sm:px-10 py-5">暢銷歌曲</a>
+                    <a href="#email" class="block font-bold px-4 sm:px-10 py-5">電子報</a>
+                </div>
+            </div>
+        </header>
+        <!-- Hero -->
+        <div class="hero flex flex-col items-center">
+            <img class="w-[60%] hidden md:block pt-[120px]" src="assets/images/logo.png" alt="Logo">
+            <img class="w-full mt-[60px]" src="assets/images/hero.png" alt="Hero">
+        </div>
+        <div class="main px-4 md:px-20 sm:px-10 py-5 md:py-[30px]">
+            <!-- News -->
+            <section id="news" class="max-w-[1440px] mx-auto py-5 md:py-[30px]">
+                <!-- 標題 -->
+                <h2 class="text-2xl md:text-[2rem] font-bold text-purple-500 border-b-2 border-purple-500 pb-3">
+                    最新消息
+                </h2>
+                <!-- 條列清單 -->
+                <div class="scroll-container max-h-[280px] overflow-y-auto">
+                    <!-- 單一項目 -->
+                    <div class="news-item flex items-center justify-between p-2">
+                        <!-- 左邊 日期 + 文字 -->
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/08/23</span>
+                            <span class="line-clamp-1 font-bold">Moon Byul 1st Full Album Repackage [Starlit of
+                                Twinkle]</span>
+                        </div>
+                        <!-- 右邊標籤 -->
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            發布
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/07/05</span>
+                            <span class="line-clamp-1 font-bold">Solar 2nd CONCERT [COLOURS] IN JAPAN 官方商品販售開始！</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            活動 & 現場
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/06/25</span>
+                            <span class="line-clamp-1 font-bold">【重要】MOOMOO JAPAN 10週年紀念商品消息</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            粉絲俱樂部
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/06/25</span>
+                            <span class="line-clamp-1 font-bold">CD銷售和特別活動將在Solar 2nd CONCERT [COLOURS] IN
+                                JAPAN的會場舉行！</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            活動 & 現場
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/06/15</span>
+                            <span class="line-clamp-1 font-bold">Solar 2nd CONCERT [COLOURS] IN JAPAN 官方商品開始預購！</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            活動 & 現場
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/06/12</span>
+                            <span class="line-clamp-1 font-bold">Solar 2nd CONCERT [COLOURS] IN JAPAN 官方商品搶先看！</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            粉絲俱樂部
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/05/30</span>
+                            <span class="line-clamp-1 font-bold">Solar第2張迷你專輯[COLOURS]發售紀念簽名會暨特別活動即將舉辦！</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            粉絲俱樂部
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/05/29</span>
+                            <span class="line-clamp-1 font-bold">Solar 2nd CONCERT [COLOURS] IN JAPAN
+                                6月28日（星期五）演出、入場/開場時間變更通知</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            粉絲俱樂部
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/05/04</span>
+                            <span class="line-clamp-1 font-bold">Solar 2nd Mini Album [COLOURS]</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            發布
+                        </span>
+                    </div>
+                    <div class="news-item flex items-center justify-between p-2">
+                        <div class="flex flex-col md:flex-row md:items-center md:gap-6">
+                            <span class="text-base font-bold min-w-[100px]">2024/05/01</span>
+                            <span class="line-clamp-1 font-bold">Moon Byul 1ST WORD TOUR IN JAPAN [MUSEUM: an epic of
+                                starlit]全球門票銷售資訊</span>
+                        </div>
+                        <span class="bg-purple-600 text-base px-3 py-1 rounded-xl ml-4 whitespace-nowrap">
+                            活動 & 現場
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <!-- Product -->
+            <section id="product" class="max-w-[1440px] mx-auto py-5 md:py-[30px]">
+                <!-- 標題 -->
+                <h2 class="text-2xl md:text-[2rem] font-bold text-purple-500 border-b-2 border-purple-500 pb-3">
+                    暢銷商品
+                </h2>
+                <div class="scroll-wrapper relative mt-5 md:mt-10">
+                    <!-- 水平滑動容器 -->
+                    <div class="x-scroll-container flex overflow-x-auto scrollbar-hide gap-4">
+                        <!-- 單一項目 -->
+                        <div
+                            class="product-card flex-shrink-0  w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2 flex flex-col items-center gap-2">
+                            <div class="product-img w-full h-full flex justify-center">
+                                <img src="assets/images/products/product-1.png" alt="">
+                            </div>
+                            <div class="card-body w-full flex flex-col gap-2">
+                                <h3 class="card-title text-base font-bold line-clamp-2">Mamamoo Cases – MAMAMOO Vintage
+                                    iPhone Soft Case RB0508</h3>
+                                <div class="card-footer flex justify-between items-center">
+                                    <p class="price text-xl font-bold">NT$ <span>550</span></p>
+                                    <a href="#"
+                                        class="cart-btn w-10 h-10 rounded-full flex justify-center items-center">
+                                        <img src="assets/images/icon/cart.svg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 單一項目 -->
+                        <div
+                            class="product-card flex-shrink-0  w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2 flex flex-col items-center gap-2">
+                            <div class="product-img w-full h-full flex justify-center">
+                                <img src="assets/images/products/product-2.png" alt="">
+                            </div>
+                            <div class="card-body w-full flex flex-col gap-2">
+                                <h3 class="card-title text-base font-bold line-clamp-2">Mamamoo Hoodies – Fandom Mamamoo
+                                    Pullover Hoodie
+                                </h3>
+                                <div class="card-footer flex justify-between items-center">
+                                    <p class="price text-xl text-base font-bold">NT$ <span>1280</span></p>
+                                    <a href="#"
+                                        class="cart-btn w-10 h-10 rounded-full flex justify-center items-center"><img
+                                            src="assets/images/icon/cart.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 單一項目 -->
+                        <div
+                            class="product-card flex-shrink-0  w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2 flex flex-col items-center gap-2">
+                            <div class="product-img w-full h-full flex justify-center">
+                                <img src="assets/images/products/product-3.png" alt="">
+                            </div>
+                            <div class="card-body w-full flex flex-col gap-2">
+                                <h3 class="card-title text-base font-bold line-clamp-2">Mamamoo T-shirts – Yellow Flower
+                                    Mamamoo
+                                    Classic T-shirt
+                                </h3>
+                                <div class="card-footer flex justify-between items-center">
+                                    <p class="price text-xl text-base font-bold">NT$ <span>800</span></p>
+                                    <a href="#"
+                                        class="cart-btn w-10 h-10 rounded-full flex justify-center items-center"><img
+                                            src="assets/images/icon/cart.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 單一項目 -->
+                        <div
+                            class="product-card flex-shrink-0  w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2 flex flex-col items-center gap-2">
+                            <div class="product-img w-full h-full flex justify-center">
+                                <img src="assets/images/products/product-4.png" alt="">
+                            </div>
+                            <div class="card-body w-full flex flex-col gap-2">
+                                <h3 class="card-title text-base font-bold line-clamp-2">Mamamoo Pillows – Hwasa Throw
+                                    Pillow
+                                    RB0508
+                                </h3>
+                                <div class="card-footer flex justify-between items-center">
+                                    <p class="price text-xl text-base font-bold">NT$ <span>868</span></p>
+                                    <a href="#"
+                                        class="cart-btn w-10 h-10 rounded-full flex justify-center items-center"><img
+                                            src="assets/images/icon/cart.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 單一項目 -->
+                        <div
+                            class="product-card flex-shrink-0  w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2 flex flex-col items-center gap-2">
+                            <div class="product-img w-full h-full flex justify-center">
+                                <img src="assets/images/products/product-5.png" alt="">
+                            </div>
+                            <div class="card-body w-full flex flex-col gap-2">
+                                <h3 class="card-title text-base font-bold line-clamp-2">(P) MAMAMOO + OFFICIAL LIGHT
+                                    STICK
+                                    ver.2.6 官方應援手燈
+                                </h3>
+                                <div class="card-footer flex justify-between items-center">
+                                    <p class="price text-xl text-base font-bold">NT$ <span>1368</span></p>
+                                    <a href="#"
+                                        class="cart-btn w-10 h-10 rounded-full flex justify-center items-center"><img
+                                            src="assets/images/icon/cart.svg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Members -->
+            <section id="members" class="max-w-[1440px] mx-auto py-5 md:py-[30px]">
+                <!-- 標題 -->
+                <h2 class="text-2xl md:text-[2rem] font-bold text-purple-500 border-b-2 border-purple-500 pb-3">
+                    成員簡介
+                </h2>
+                <!-- 水平滑動容器 -->
+                <div class="x-scroll-container mt-5 md:mt-10 flex overflow-x-auto scrollbar-hide gap-4">
+                    <div class="member-card flex-shrink-0 w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2">
+                        <div class="card-inner">
+                            <!-- 正面 -->
+                            <div class="card-front rounded-sm">
+                                <div class="member-img w-full h-full">
+                                    <img class="w-full h-full object-cover" src="assets/images/members/member-1.png"
+                                        alt="Solar">
+                                </div>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="card-back rounded-sm">
+                                <div class="w-full h-full border border-white px-4 py-10 rounded-sm overflow-y-auto">
+                                    <div class="text-center w-full pb-2">
+                                        <h3 class="text-xl font-bold">金容仙</h3>
+                                        <h6 class="text-sm pb-2">（Kim Yong-sun，藝名 Solar）</h6>
+                                    </div>
+                                    <ul class="w-full border-t py-2 text-sm space-y-1">
+                                        <li><span>生日：</span>1991年2月21日</li>
+                                        <li><span>職位：</span>隊長及主唱</li>
+                                    </ul>
+                                    <p class="text-sm leading-relaxed">
+                                        以強勁卻溫暖的嗓音聞名，無論是高音爆發力還是抒情細膩度都備受肯定，被譽為 K-pop
+                                        中極具代表性的實力派歌手之一。她在團體歌曲中常擔任核心旋律的引導者，舞台魅力充滿自信與感染力。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="member-title">Solar</h3>
+                    </div>
+                    <div class="member-card flex-shrink-0 w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2">
+                        <div class="card-inner">
+                            <!-- 正面 -->
+                            <div class="card-front rounded-sm">
+                                <div class="member-img w-full h-full">
+                                    <img class="w-full h-full object-cover" src="assets/images/members/member-2.png"
+                                        alt="Solar">
+                                </div>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="card-back rounded-sm">
+                                <div class="w-full h-full border border-white px-4 py-10 rounded-sm overflow-y-auto">
+                                    <div class="text-center w-full pb-2">
+                                        <h3 class="text-xl font-bold">文星伊</h3>
+                                        <h6 class="text-sm">（Moon Byul-yi，藝名 Moonbyul）</h6>
+                                    </div>
+                                    <ul class="w-full border-t py-2 text-sm space-y-1">
+                                        <li><span>生日：</span>1992年12月22日</li>
+                                        <li><span>職位：</span>Rapper與表演主力</li>
+                                    </ul>
+                                    <p class="text-sm leading-relaxed">
+                                        她以低沉獨特的聲線與穩定的舞台掌控力聞名，Rap 風格鮮明，兼具力度與旋律感。Moonbyul
+                                        同時展現創作能力，參與多首歌曲的作詞，並以帥氣舞台形象深受粉絲喜愛。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="member-title">MoonByul</h3>
+                    </div>
+                    <div class="member-card flex-shrink-0 w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2">
+                        <div class="card-inner">
+                            <!-- 正面 -->
+                            <div class="card-front rounded-sm">
+                                <div class="member-img w-full h-full">
+                                    <img class="w-full h-full object-cover" src="assets/images/members/member-3.png"
+                                        alt="Solar">
+                                </div>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="card-back rounded-sm">
+                                <div class="w-full h-full border border-white px-4 py-10 rounded-sm overflow-y-auto">
+                                    <div class="text-center w-full">
+                                        <h3 class="text-xl font-bold">丁輝人</h3>
+                                        <h6 class="text-sm pb-2">（Jung Whee-in，藝名 Wheein）</h6>
+                                    </div>
+                                    <ul class="w-full border-t py-2 text-sm space-y-1">
+                                        <li><span>生日：</span>1995年4月17日</li>
+                                        <li><span>職位：</span>主唱</li>
+                                    </ul>
+                                    <p class="text-sm leading-relaxed">
+                                        她以清澈細膩的音色和穩健的高音著稱，情感表達真摯動人。無論是 R&B、抒情還是快節奏歌曲，她都能完美駕馭。Wheein
+                                        的舞台風格自然靈動，散發親和力與感染力，是團體中不可或缺的聲音。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="member-title">Wheein</h3>
+                    </div>
+                    <div class="member-card flex-shrink-0 w-[85%] sm:w-[45%] md:w-1/4 sm:w-1/2">
+                        <div class="card-inner">
+                            <!-- 正面 -->
+                            <div class="card-front rounded-sm">
+                                <div class="member-img w-full h-full">
+                                    <img class="w-full h-full object-cover" src="assets/images/members/member-4.png"
+                                        alt="Solar">
+                                </div>
+                            </div>
+                            <!-- 背面 -->
+                            <div class="card-back rounded-sm">
+                                <div class="w-full h-full border border-white px-4 py-10 rounded-sm overflow-y-auto">
+                                    <div class="text-center w-full">
+                                        <h3 class="text-xl font-bold">安慧真</h3>
+                                        <h6 class="text-sm pb-2">（Ahn Hye-jin，藝名 Hwasa）</h6>
+                                    </div>
+                                    <ul class="w-full border-t py-2 text-sm space-y-1">
+                                        <li><span>生日：</span>1995年7月23日</li>
+                                        <li><span>職位：</span>主唱與Rapper</li>
+                                    </ul>
+                                    <p class="text-sm leading-relaxed">
+                                        她以獨特低沉嗓音、性感舞台風格及極具個性的自信形象廣為人知。Hwasa
+                                        不僅是唱將，更擅長創作，展現多樣音樂風格。憑藉強烈的舞台魅力與突破傳統的美學態度，她成為韓國樂壇最具代表性的個人偶像之一。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="member-title">Hwasa</h3>
+                    </div>
+                </div>
+            </section>
+            <!-- Music -->
+            <section id="music" class="max-w-[1440px] mx-auto py-5 md:py-[30px]">
+                <!-- 標題 -->
+                <h2 class="text-2xl md:text-[2rem] font-bold text-purple-500 border-b-2 border-purple-500 pb-3">
+                    暢銷歌曲
+                </h2>
+                <div class="collection">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="music-player swiper-slide">
+                                <img src="assets/images/music/music (1).png" alt="YELLOW FLOWER"
+                                    class="object-cover rounded-md">
+                                <div class="card-body">
+                                    <h3 class="text-base font-bold text-center">Yellow Flower</h3>
+                                    <!-- 音樂播放器控制 -->
+                                    <audio class="audio-player" src="assets/music/yellow-flower.mp3"></audio>
+                                    <div class="flex flex-col items-center gap-2">
+                                        <input type="range" class="progress-bar w-full mt-2" value="0" min="0" step="1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="current-time">0:00</p>
+                                            <p class="duration">0:00</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center gap-2">
+                                        <button class="backward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7503)">
+                                                    <path
+                                                        d="M11.3242 0.0938385C9.08812 -0.213133 6.81327 0.237986 4.86627 1.37447C4.103 1.82 3.40763 2.36081 2.79458 2.97962L2.0474 2.18293C1.82186 1.94241 1.41926 2.03499 1.3227 2.34961L0.0192394 6.59715C-0.0773093 6.91178 0.204688 7.21246 0.526783 7.13835L4.87508 6.13783C5.19715 6.0637 5.31778 5.67046 5.09224 5.42995L4.16715 4.44337C4.67172 3.92332 5.24814 3.47026 5.88321 3.09956C7.4408 2.19039 9.26064 1.82952 11.0495 2.07509C12.8383 2.32067 14.492 3.15841 15.744 4.45331C16.9961 5.7482 17.7736 7.42485 17.9512 9.21308C18.1288 11.0013 17.6962 12.797 16.7232 14.3107C15.7502 15.8245 14.2933 16.9682 12.5874 17.5575C10.8815 18.1468 9.02585 18.1476 7.31953 17.5594C5.93121 17.0809 4.70752 16.2352 3.77494 15.1217C3.41963 14.6974 2.80259 14.557 2.33527 14.8549C1.86794 15.1529 1.72802 15.7751 2.07256 16.2081C3.25652 17.6959 4.8466 18.8235 6.66176 19.4492C8.79467 20.1844 11.1142 20.1836 13.2466 19.4469C15.379 18.7103 17.2001 17.2807 18.4164 15.3885C19.6327 13.4963 20.1733 11.2516 19.9512 9.01635C19.7292 6.78106 18.7574 4.68521 17.1923 3.06659C15.6273 1.44799 13.5602 0.400811 11.3242 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297L7.19297 8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7503">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                        <button class="play-btn w-10 h-10 flex justify-center items-center">
+                                            <!-- Play SVG -->
+                                            <svg class="play-icon" width="21" height="21" viewBox="0 0 21 21"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_26_3728)">
+                                                    <path
+                                                        d="M2.00006 20.0002C1.63405 20.0002 1.27004 19.9002 0.948029 19.7022C0.65837 19.5225 0.419312 19.2719 0.253433 18.9741C0.0875535 18.6763 0.00032971 18.3411 0 18.0002V1.9997C0 1.30568 0.360011 0.661662 0.948029 0.297651C1.23833 0.119167 1.56925 0.0174463 1.90968 0.0020517C2.25011 -0.0133429 2.58886 0.0580946 2.89409 0.209648L18.8946 8.20989C19.2268 8.3763 19.5061 8.63187 19.7014 8.94801C19.8966 9.26415 20 9.62838 20 9.99995C20 10.3715 19.8966 10.7357 19.7014 11.0519C19.5061 11.368 19.2268 11.6236 18.8946 11.79L2.89409 19.7902C2.61408 19.9302 2.30407 20.0002 2.00006 20.0002Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_26_3728">
+                                                        <rect width="19.9998" height="20" fill="white"
+                                                            transform="translate(0.333252 0.116577)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <!-- Pause SVG -->
+                                            <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2115_815)">
+                                                    <path
+                                                        d="M5.17857 20H4.64286C3.45982 20 2.5 19.0402 2.5 17.8571V2.14286C2.5 0.959822 3.45982 0 4.64286 0H5.17857C6.36161 0 7.32143 0.959822 7.32143 2.14286V17.8571C7.32143 19.0402 6.36161 20 5.17857 20ZM17.5 17.8571V2.14286C17.5 0.959822 16.5402 0 15.3571 0H14.8214C13.6384 0 12.6786 0.959822 12.6786 2.14286V17.8571C12.6786 19.0402 13.6384 20 14.8214 20H15.3571C16.5402 20 17.5 19.0402 17.5 17.8571Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2115_815">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <button class="forward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7721)">
+                                                    <path
+                                                        d="M8.67582 0.0938385C10.9119 -0.213133 13.1867 0.237986 15.1337 1.37447C15.897 1.82 16.5924 2.36081 17.2054 2.97962L17.9526 2.18293C18.1781 1.94241 18.5807 2.03499 18.6773 2.34961L19.9808 6.59715C20.0773 6.91178 19.7953 7.21246 19.4732 7.13835L15.1249 6.13783C14.8029 6.0637 14.6822 5.67046 14.9078 5.42995L15.8328 4.44337C15.3283 3.92332 14.7519 3.47026 14.1168 3.09956C12.5592 2.19039 10.7394 1.82952 8.95052 2.07509C7.16167 2.32067 5.508 3.15841 4.25597 4.45331C3.00394 5.7482 2.22645 7.42485 2.04882 9.21308C1.87119 11.0013 2.30375 12.797 3.27678 14.3107C4.24982 15.8245 5.70671 16.9682 7.41262 17.5575C9.11853 18.1468 10.9741 18.1476 12.6805 17.5594C14.0688 17.0809 15.2925 16.2352 16.2251 15.1217C16.5804 14.6974 17.1974 14.557 17.6647 14.8549C18.1321 15.1529 18.272 15.7751 17.9274 16.2081C16.7435 17.6959 15.1534 18.8235 13.3382 19.4492C11.2053 20.1844 8.88582 20.1836 6.75343 19.4469C4.62103 18.7103 2.79993 17.2807 1.58363 15.3885C0.367339 13.4963 -0.173285 11.2516 0.0487546 9.01635C0.270796 6.78106 1.24262 4.68521 2.80766 3.06659C4.37269 1.44799 6.43977 0.400811 8.67582 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297V8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7721">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="music-player swiper-slide">
+                                <img src="assets/images/music/music (2).png" alt="REALITY IN BLACK"
+                                    class="object-cover rounded-md">
+                                <div class="card-body">
+                                    <h3 class="text-base font-bold text-center">HIP</h3>
+                                    <!-- 音樂播放器控制 -->
+                                    <audio class="audio-player" src="assets/music/hip.mp3"></audio>
+                                    <div class="flex flex-col items-center gap-2">
+                                        <input type="range" class="progress-bar w-full mt-2" value="0" min="0" step="1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="current-time">0:00</p>
+                                            <p class="duration">0:00</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center gap-2">
+                                        <button class="backward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7503)">
+                                                    <path
+                                                        d="M11.3242 0.0938385C9.08812 -0.213133 6.81327 0.237986 4.86627 1.37447C4.103 1.82 3.40763 2.36081 2.79458 2.97962L2.0474 2.18293C1.82186 1.94241 1.41926 2.03499 1.3227 2.34961L0.0192394 6.59715C-0.0773093 6.91178 0.204688 7.21246 0.526783 7.13835L4.87508 6.13783C5.19715 6.0637 5.31778 5.67046 5.09224 5.42995L4.16715 4.44337C4.67172 3.92332 5.24814 3.47026 5.88321 3.09956C7.4408 2.19039 9.26064 1.82952 11.0495 2.07509C12.8383 2.32067 14.492 3.15841 15.744 4.45331C16.9961 5.7482 17.7736 7.42485 17.9512 9.21308C18.1288 11.0013 17.6962 12.797 16.7232 14.3107C15.7502 15.8245 14.2933 16.9682 12.5874 17.5575C10.8815 18.1468 9.02585 18.1476 7.31953 17.5594C5.93121 17.0809 4.70752 16.2352 3.77494 15.1217C3.41963 14.6974 2.80259 14.557 2.33527 14.8549C1.86794 15.1529 1.72802 15.7751 2.07256 16.2081C3.25652 17.6959 4.8466 18.8235 6.66176 19.4492C8.79467 20.1844 11.1142 20.1836 13.2466 19.4469C15.379 18.7103 17.2001 17.2807 18.4164 15.3885C19.6327 13.4963 20.1733 11.2516 19.9512 9.01635C19.7292 6.78106 18.7574 4.68521 17.1923 3.06659C15.6273 1.44799 13.5602 0.400811 11.3242 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297L7.19297 8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7503">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                        <button class="play-btn w-10 h-10 flex justify-center items-center">
+                                            <!-- Play SVG -->
+                                            <svg class="play-icon" width="21" height="21" viewBox="0 0 21 21"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_26_3728)">
+                                                    <path
+                                                        d="M2.00006 20.0002C1.63405 20.0002 1.27004 19.9002 0.948029 19.7022C0.65837 19.5225 0.419312 19.2719 0.253433 18.9741C0.0875535 18.6763 0.00032971 18.3411 0 18.0002V1.9997C0 1.30568 0.360011 0.661662 0.948029 0.297651C1.23833 0.119167 1.56925 0.0174463 1.90968 0.0020517C2.25011 -0.0133429 2.58886 0.0580946 2.89409 0.209648L18.8946 8.20989C19.2268 8.3763 19.5061 8.63187 19.7014 8.94801C19.8966 9.26415 20 9.62838 20 9.99995C20 10.3715 19.8966 10.7357 19.7014 11.0519C19.5061 11.368 19.2268 11.6236 18.8946 11.79L2.89409 19.7902C2.61408 19.9302 2.30407 20.0002 2.00006 20.0002Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_26_3728">
+                                                        <rect width="19.9998" height="20" fill="white"
+                                                            transform="translate(0.333252 0.116577)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <!-- Pause SVG -->
+                                            <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2115_815)">
+                                                    <path
+                                                        d="M5.17857 20H4.64286C3.45982 20 2.5 19.0402 2.5 17.8571V2.14286C2.5 0.959822 3.45982 0 4.64286 0H5.17857C6.36161 0 7.32143 0.959822 7.32143 2.14286V17.8571C7.32143 19.0402 6.36161 20 5.17857 20ZM17.5 17.8571V2.14286C17.5 0.959822 16.5402 0 15.3571 0H14.8214C13.6384 0 12.6786 0.959822 12.6786 2.14286V17.8571C12.6786 19.0402 13.6384 20 14.8214 20H15.3571C16.5402 20 17.5 19.0402 17.5 17.8571Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2115_815">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <button class="forward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7721)">
+                                                    <path
+                                                        d="M8.67582 0.0938385C10.9119 -0.213133 13.1867 0.237986 15.1337 1.37447C15.897 1.82 16.5924 2.36081 17.2054 2.97962L17.9526 2.18293C18.1781 1.94241 18.5807 2.03499 18.6773 2.34961L19.9808 6.59715C20.0773 6.91178 19.7953 7.21246 19.4732 7.13835L15.1249 6.13783C14.8029 6.0637 14.6822 5.67046 14.9078 5.42995L15.8328 4.44337C15.3283 3.92332 14.7519 3.47026 14.1168 3.09956C12.5592 2.19039 10.7394 1.82952 8.95052 2.07509C7.16167 2.32067 5.508 3.15841 4.25597 4.45331C3.00394 5.7482 2.22645 7.42485 2.04882 9.21308C1.87119 11.0013 2.30375 12.797 3.27678 14.3107C4.24982 15.8245 5.70671 16.9682 7.41262 17.5575C9.11853 18.1468 10.9741 18.1476 12.6805 17.5594C14.0688 17.0809 15.2925 16.2352 16.2251 15.1217C16.5804 14.6974 17.1974 14.557 17.6647 14.8549C18.1321 15.1529 18.272 15.7751 17.9274 16.2081C16.7435 17.6959 15.1534 18.8235 13.3382 19.4492C11.2053 20.1844 8.88582 20.1836 6.75343 19.4469C4.62103 18.7103 2.79993 17.2807 1.58363 15.3885C0.367339 13.4963 -0.173285 11.2516 0.0487546 9.01635C0.270796 6.78106 1.24262 4.68521 2.80766 3.06659C4.37269 1.44799 6.43977 0.400811 8.67582 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297V8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7721">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="music-player swiper-slide">
+                                <img src="assets/images/music/music (5).png" alt="WAW" class="object-cover rounded-md">
+                                <div class="card-body">
+                                    <h3 class="text-base font-bold text-center">Where Are We Now</h3>
+                                    <!-- 音樂播放器控制 -->
+                                    <audio class="audio-player" src="assets/music/Where Are We Now.mp3"></audio>
+                                    <div class="flex flex-col items-center gap-2">
+                                        <input type="range" class="progress-bar w-full mt-2" value="0" min="0" step="1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="current-time">0:00</p>
+                                            <p class="duration">0:00</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center gap-2">
+                                        <button class="backward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7503)">
+                                                    <path
+                                                        d="M11.3242 0.0938385C9.08812 -0.213133 6.81327 0.237986 4.86627 1.37447C4.103 1.82 3.40763 2.36081 2.79458 2.97962L2.0474 2.18293C1.82186 1.94241 1.41926 2.03499 1.3227 2.34961L0.0192394 6.59715C-0.0773093 6.91178 0.204688 7.21246 0.526783 7.13835L4.87508 6.13783C5.19715 6.0637 5.31778 5.67046 5.09224 5.42995L4.16715 4.44337C4.67172 3.92332 5.24814 3.47026 5.88321 3.09956C7.4408 2.19039 9.26064 1.82952 11.0495 2.07509C12.8383 2.32067 14.492 3.15841 15.744 4.45331C16.9961 5.7482 17.7736 7.42485 17.9512 9.21308C18.1288 11.0013 17.6962 12.797 16.7232 14.3107C15.7502 15.8245 14.2933 16.9682 12.5874 17.5575C10.8815 18.1468 9.02585 18.1476 7.31953 17.5594C5.93121 17.0809 4.70752 16.2352 3.77494 15.1217C3.41963 14.6974 2.80259 14.557 2.33527 14.8549C1.86794 15.1529 1.72802 15.7751 2.07256 16.2081C3.25652 17.6959 4.8466 18.8235 6.66176 19.4492C8.79467 20.1844 11.1142 20.1836 13.2466 19.4469C15.379 18.7103 17.2001 17.2807 18.4164 15.3885C19.6327 13.4963 20.1733 11.2516 19.9512 9.01635C19.7292 6.78106 18.7574 4.68521 17.1923 3.06659C15.6273 1.44799 13.5602 0.400811 11.3242 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297L7.19297 8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7503">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                        <button class="play-btn w-10 h-10 flex justify-center items-center">
+                                            <!-- Play SVG -->
+                                            <svg class="play-icon" width="21" height="21" viewBox="0 0 21 21"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_26_3728)">
+                                                    <path
+                                                        d="M2.00006 20.0002C1.63405 20.0002 1.27004 19.9002 0.948029 19.7022C0.65837 19.5225 0.419312 19.2719 0.253433 18.9741C0.0875535 18.6763 0.00032971 18.3411 0 18.0002V1.9997C0 1.30568 0.360011 0.661662 0.948029 0.297651C1.23833 0.119167 1.56925 0.0174463 1.90968 0.0020517C2.25011 -0.0133429 2.58886 0.0580946 2.89409 0.209648L18.8946 8.20989C19.2268 8.3763 19.5061 8.63187 19.7014 8.94801C19.8966 9.26415 20 9.62838 20 9.99995C20 10.3715 19.8966 10.7357 19.7014 11.0519C19.5061 11.368 19.2268 11.6236 18.8946 11.79L2.89409 19.7902C2.61408 19.9302 2.30407 20.0002 2.00006 20.0002Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_26_3728">
+                                                        <rect width="19.9998" height="20" fill="white"
+                                                            transform="translate(0.333252 0.116577)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <!-- Pause SVG -->
+                                            <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2115_815)">
+                                                    <path
+                                                        d="M5.17857 20H4.64286C3.45982 20 2.5 19.0402 2.5 17.8571V2.14286C2.5 0.959822 3.45982 0 4.64286 0H5.17857C6.36161 0 7.32143 0.959822 7.32143 2.14286V17.8571C7.32143 19.0402 6.36161 20 5.17857 20ZM17.5 17.8571V2.14286C17.5 0.959822 16.5402 0 15.3571 0H14.8214C13.6384 0 12.6786 0.959822 12.6786 2.14286V17.8571C12.6786 19.0402 13.6384 20 14.8214 20H15.3571C16.5402 20 17.5 19.0402 17.5 17.8571Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2115_815">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <button class="forward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7721)">
+                                                    <path
+                                                        d="M8.67582 0.0938385C10.9119 -0.213133 13.1867 0.237986 15.1337 1.37447C15.897 1.82 16.5924 2.36081 17.2054 2.97962L17.9526 2.18293C18.1781 1.94241 18.5807 2.03499 18.6773 2.34961L19.9808 6.59715C20.0773 6.91178 19.7953 7.21246 19.4732 7.13835L15.1249 6.13783C14.8029 6.0637 14.6822 5.67046 14.9078 5.42995L15.8328 4.44337C15.3283 3.92332 14.7519 3.47026 14.1168 3.09956C12.5592 2.19039 10.7394 1.82952 8.95052 2.07509C7.16167 2.32067 5.508 3.15841 4.25597 4.45331C3.00394 5.7482 2.22645 7.42485 2.04882 9.21308C1.87119 11.0013 2.30375 12.797 3.27678 14.3107C4.24982 15.8245 5.70671 16.9682 7.41262 17.5575C9.11853 18.1468 10.9741 18.1476 12.6805 17.5594C14.0688 17.0809 15.2925 16.2352 16.2251 15.1217C16.5804 14.6974 17.1974 14.557 17.6647 14.8549C18.1321 15.1529 18.272 15.7751 17.9274 16.2081C16.7435 17.6959 15.1534 18.8235 13.3382 19.4492C11.2053 20.1844 8.88582 20.1836 6.75343 19.4469C4.62103 18.7103 2.79993 17.2807 1.58363 15.3885C0.367339 13.4963 -0.173285 11.2516 0.0487546 9.01635C0.270796 6.78106 1.24262 4.68521 2.80766 3.06659C4.37269 1.44799 6.43977 0.400811 8.67582 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297V8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7721">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="music-player swiper-slide">
+                                <img src="assets/images/music/music (4).png" alt="I SAY MAMAMOO:THE BEST"
+                                    class="object-cover rounded-md">
+                                <div class="card-body">
+                                    <h3 class="text-base font-bold text-center">You Don t Know Me</h3>
+                                    <!-- 音樂播放器控制 -->
+                                    <audio class="audio-player" src="assets/music/You Don t Know Me.mp3"></audio>
+                                    <div class="flex flex-col items-center gap-2">
+                                        <input type="range" class="progress-bar w-full mt-2" value="0" min="0" step="1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="current-time">0:00</p>
+                                            <p class="duration">0:00</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center gap-2">
+                                        <button class="backward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7503)">
+                                                    <path
+                                                        d="M11.3242 0.0938385C9.08812 -0.213133 6.81327 0.237986 4.86627 1.37447C4.103 1.82 3.40763 2.36081 2.79458 2.97962L2.0474 2.18293C1.82186 1.94241 1.41926 2.03499 1.3227 2.34961L0.0192394 6.59715C-0.0773093 6.91178 0.204688 7.21246 0.526783 7.13835L4.87508 6.13783C5.19715 6.0637 5.31778 5.67046 5.09224 5.42995L4.16715 4.44337C4.67172 3.92332 5.24814 3.47026 5.88321 3.09956C7.4408 2.19039 9.26064 1.82952 11.0495 2.07509C12.8383 2.32067 14.492 3.15841 15.744 4.45331C16.9961 5.7482 17.7736 7.42485 17.9512 9.21308C18.1288 11.0013 17.6962 12.797 16.7232 14.3107C15.7502 15.8245 14.2933 16.9682 12.5874 17.5575C10.8815 18.1468 9.02585 18.1476 7.31953 17.5594C5.93121 17.0809 4.70752 16.2352 3.77494 15.1217C3.41963 14.6974 2.80259 14.557 2.33527 14.8549C1.86794 15.1529 1.72802 15.7751 2.07256 16.2081C3.25652 17.6959 4.8466 18.8235 6.66176 19.4492C8.79467 20.1844 11.1142 20.1836 13.2466 19.4469C15.379 18.7103 17.2001 17.2807 18.4164 15.3885C19.6327 13.4963 20.1733 11.2516 19.9512 9.01635C19.7292 6.78106 18.7574 4.68521 17.1923 3.06659C15.6273 1.44799 13.5602 0.400811 11.3242 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297L7.19297 8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7503">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                        <button class="play-btn w-10 h-10 flex justify-center items-center">
+                                            <!-- Play SVG -->
+                                            <svg class="play-icon" width="21" height="21" viewBox="0 0 21 21"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_26_3728)">
+                                                    <path
+                                                        d="M2.00006 20.0002C1.63405 20.0002 1.27004 19.9002 0.948029 19.7022C0.65837 19.5225 0.419312 19.2719 0.253433 18.9741C0.0875535 18.6763 0.00032971 18.3411 0 18.0002V1.9997C0 1.30568 0.360011 0.661662 0.948029 0.297651C1.23833 0.119167 1.56925 0.0174463 1.90968 0.0020517C2.25011 -0.0133429 2.58886 0.0580946 2.89409 0.209648L18.8946 8.20989C19.2268 8.3763 19.5061 8.63187 19.7014 8.94801C19.8966 9.26415 20 9.62838 20 9.99995C20 10.3715 19.8966 10.7357 19.7014 11.0519C19.5061 11.368 19.2268 11.6236 18.8946 11.79L2.89409 19.7902C2.61408 19.9302 2.30407 20.0002 2.00006 20.0002Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_26_3728">
+                                                        <rect width="19.9998" height="20" fill="white"
+                                                            transform="translate(0.333252 0.116577)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <!-- Pause SVG -->
+                                            <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2115_815)">
+                                                    <path
+                                                        d="M5.17857 20H4.64286C3.45982 20 2.5 19.0402 2.5 17.8571V2.14286C2.5 0.959822 3.45982 0 4.64286 0H5.17857C6.36161 0 7.32143 0.959822 7.32143 2.14286V17.8571C7.32143 19.0402 6.36161 20 5.17857 20ZM17.5 17.8571V2.14286C17.5 0.959822 16.5402 0 15.3571 0H14.8214C13.6384 0 12.6786 0.959822 12.6786 2.14286V17.8571C12.6786 19.0402 13.6384 20 14.8214 20H15.3571C16.5402 20 17.5 19.0402 17.5 17.8571Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2115_815">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <button class="forward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7721)">
+                                                    <path
+                                                        d="M8.67582 0.0938385C10.9119 -0.213133 13.1867 0.237986 15.1337 1.37447C15.897 1.82 16.5924 2.36081 17.2054 2.97962L17.9526 2.18293C18.1781 1.94241 18.5807 2.03499 18.6773 2.34961L19.9808 6.59715C20.0773 6.91178 19.7953 7.21246 19.4732 7.13835L15.1249 6.13783C14.8029 6.0637 14.6822 5.67046 14.9078 5.42995L15.8328 4.44337C15.3283 3.92332 14.7519 3.47026 14.1168 3.09956C12.5592 2.19039 10.7394 1.82952 8.95052 2.07509C7.16167 2.32067 5.508 3.15841 4.25597 4.45331C3.00394 5.7482 2.22645 7.42485 2.04882 9.21308C1.87119 11.0013 2.30375 12.797 3.27678 14.3107C4.24982 15.8245 5.70671 16.9682 7.41262 17.5575C9.11853 18.1468 10.9741 18.1476 12.6805 17.5594C14.0688 17.0809 15.2925 16.2352 16.2251 15.1217C16.5804 14.6974 17.1974 14.557 17.6647 14.8549C18.1321 15.1529 18.272 15.7751 17.9274 16.2081C16.7435 17.6959 15.1534 18.8235 13.3382 19.4492C11.2053 20.1844 8.88582 20.1836 6.75343 19.4469C4.62103 18.7103 2.79993 17.2807 1.58363 15.3885C0.367339 13.4963 -0.173285 11.2516 0.0487546 9.01635C0.270796 6.78106 1.24262 4.68521 2.80766 3.06659C4.37269 1.44799 6.43977 0.400811 8.67582 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297V8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7721">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="music-player swiper-slide">
+                                <img src="assets/images/music/music (3).png" alt="PURPLE"
+                                    class="object-cover rounded-md">
+                                <div class="card-body">
+                                    <h3 class="text-base font-bold text-center">Yes I am</h3>
+                                    <!-- 音樂播放器控制 -->
+                                    <audio class="audio-player" src="assets/music/Yes I am.mp3"></audio>
+                                    <div class="flex flex-col items-center gap-2">
+                                        <input type="range" class="progress-bar w-full mt-2" value="0" min="0" step="1">
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="current-time">0:00</p>
+                                            <p class="duration">0:00</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center gap-2">
+                                        <button class="backward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7503)">
+                                                    <path
+                                                        d="M11.3242 0.0938385C9.08812 -0.213133 6.81327 0.237986 4.86627 1.37447C4.103 1.82 3.40763 2.36081 2.79458 2.97962L2.0474 2.18293C1.82186 1.94241 1.41926 2.03499 1.3227 2.34961L0.0192394 6.59715C-0.0773093 6.91178 0.204688 7.21246 0.526783 7.13835L4.87508 6.13783C5.19715 6.0637 5.31778 5.67046 5.09224 5.42995L4.16715 4.44337C4.67172 3.92332 5.24814 3.47026 5.88321 3.09956C7.4408 2.19039 9.26064 1.82952 11.0495 2.07509C12.8383 2.32067 14.492 3.15841 15.744 4.45331C16.9961 5.7482 17.7736 7.42485 17.9512 9.21308C18.1288 11.0013 17.6962 12.797 16.7232 14.3107C15.7502 15.8245 14.2933 16.9682 12.5874 17.5575C10.8815 18.1468 9.02585 18.1476 7.31953 17.5594C5.93121 17.0809 4.70752 16.2352 3.77494 15.1217C3.41963 14.6974 2.80259 14.557 2.33527 14.8549C1.86794 15.1529 1.72802 15.7751 2.07256 16.2081C3.25652 17.6959 4.8466 18.8235 6.66176 19.4492C8.79467 20.1844 11.1142 20.1836 13.2466 19.4469C15.379 18.7103 17.2001 17.2807 18.4164 15.3885C19.6327 13.4963 20.1733 11.2516 19.9512 9.01635C19.7292 6.78106 18.7574 4.68521 17.1923 3.06659C15.6273 1.44799 13.5602 0.400811 11.3242 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297L7.19297 8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7503">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                        <button class="play-btn w-10 h-10 flex justify-center items-center">
+                                            <!-- Play SVG -->
+                                            <svg class="play-icon" width="21" height="21" viewBox="0 0 21 21"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_26_3728)">
+                                                    <path
+                                                        d="M2.00006 20.0002C1.63405 20.0002 1.27004 19.9002 0.948029 19.7022C0.65837 19.5225 0.419312 19.2719 0.253433 18.9741C0.0875535 18.6763 0.00032971 18.3411 0 18.0002V1.9997C0 1.30568 0.360011 0.661662 0.948029 0.297651C1.23833 0.119167 1.56925 0.0174463 1.90968 0.0020517C2.25011 -0.0133429 2.58886 0.0580946 2.89409 0.209648L18.8946 8.20989C19.2268 8.3763 19.5061 8.63187 19.7014 8.94801C19.8966 9.26415 20 9.62838 20 9.99995C20 10.3715 19.8966 10.7357 19.7014 11.0519C19.5061 11.368 19.2268 11.6236 18.8946 11.79L2.89409 19.7902C2.61408 19.9302 2.30407 20.0002 2.00006 20.0002Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_26_3728">
+                                                        <rect width="19.9998" height="20" fill="white"
+                                                            transform="translate(0.333252 0.116577)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <!-- Pause SVG -->
+                                            <svg class="pause-icon" width="20" height="20" viewBox="0 0 20 20"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_2115_815)">
+                                                    <path
+                                                        d="M5.17857 20H4.64286C3.45982 20 2.5 19.0402 2.5 17.8571V2.14286C2.5 0.959822 3.45982 0 4.64286 0H5.17857C6.36161 0 7.32143 0.959822 7.32143 2.14286V17.8571C7.32143 19.0402 6.36161 20 5.17857 20ZM17.5 17.8571V2.14286C17.5 0.959822 16.5402 0 15.3571 0H14.8214C13.6384 0 12.6786 0.959822 12.6786 2.14286V17.8571C12.6786 19.0402 13.6384 20 14.8214 20H15.3571C16.5402 20 17.5 19.0402 17.5 17.8571Z"
+                                                        fill="currentColor" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2115_815">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <button class="forward-btn w-10 h-10 flex justify-center items-center"><svg
+                                                width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_28_7721)">
+                                                    <path
+                                                        d="M8.67582 0.0938385C10.9119 -0.213133 13.1867 0.237986 15.1337 1.37447C15.897 1.82 16.5924 2.36081 17.2054 2.97962L17.9526 2.18293C18.1781 1.94241 18.5807 2.03499 18.6773 2.34961L19.9808 6.59715C20.0773 6.91178 19.7953 7.21246 19.4732 7.13835L15.1249 6.13783C14.8029 6.0637 14.6822 5.67046 14.9078 5.42995L15.8328 4.44337C15.3283 3.92332 14.7519 3.47026 14.1168 3.09956C12.5592 2.19039 10.7394 1.82952 8.95052 2.07509C7.16167 2.32067 5.508 3.15841 4.25597 4.45331C3.00394 5.7482 2.22645 7.42485 2.04882 9.21308C1.87119 11.0013 2.30375 12.797 3.27678 14.3107C4.24982 15.8245 5.70671 16.9682 7.41262 17.5575C9.11853 18.1468 10.9741 18.1476 12.6805 17.5594C14.0688 17.0809 15.2925 16.2352 16.2251 15.1217C16.5804 14.6974 17.1974 14.557 17.6647 14.8549C18.1321 15.1529 18.272 15.7751 17.9274 16.2081C16.7435 17.6959 15.1534 18.8235 13.3382 19.4492C11.2053 20.1844 8.88582 20.1836 6.75343 19.4469C4.62103 18.7103 2.79993 17.2807 1.58363 15.3885C0.367339 13.4963 -0.173285 11.2516 0.0487546 9.01635C0.270796 6.78106 1.24262 4.68521 2.80766 3.06659C4.37269 1.44799 6.43977 0.400811 8.67582 0.0938385Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M12.7732 13.3044C12.3392 13.3044 11.9572 13.1799 11.6273 12.9311C11.3033 12.6765 11.0486 12.3003 10.8635 11.8026C10.6841 11.2992 10.5944 10.677 10.5944 9.93631C10.5944 9.20135 10.6841 8.59082 10.8635 8.10471C11.0486 7.61281 11.3033 7.24533 11.6273 7.00228C11.9572 6.75922 12.3392 6.6377 12.7732 6.6377C13.213 6.6377 13.5949 6.76212 13.919 7.01096C14.2431 7.25401 14.4948 7.6186 14.6742 8.10471C14.8594 8.59082 14.952 9.20135 14.952 9.93631C14.952 10.677 14.8594 11.2992 14.6742 11.8026C14.4948 12.3003 14.2431 12.6765 13.919 12.9311C13.5949 13.1799 13.213 13.3044 12.7732 13.3044ZM12.7732 12.3061C12.9642 12.3061 13.132 12.2338 13.2767 12.0891C13.4213 11.9444 13.5342 11.7014 13.6152 11.3599C13.6962 11.0127 13.7367 10.5382 13.7367 9.93631C13.7367 9.34024 13.6962 8.87438 13.6152 8.53874C13.5342 8.1973 13.4213 7.96003 13.2767 7.82693C13.132 7.68804 12.9642 7.6186 12.7732 7.6186C12.5938 7.6186 12.4289 7.68804 12.2784 7.82693C12.1337 7.96003 12.018 8.1973 11.9312 8.53874C11.8444 8.87438 11.801 9.34024 11.801 9.93631C11.801 10.5382 11.8444 11.0127 11.9312 11.3599C12.018 11.7014 12.1337 11.9444 12.2784 12.0891C12.4289 12.2338 12.5938 12.3061 12.7732 12.3061Z"
+                                                        fill="white" />
+                                                    <path
+                                                        d="M5.80408 13.1828V12.1411H7.19297V8.08729H6.02109V7.28868C6.34517 7.23081 6.62294 7.16137 6.85442 7.08035C7.09169 6.99354 7.3116 6.88359 7.51415 6.75049H8.46033V12.1411H9.66692V13.1828H5.80408Z"
+                                                        fill="white" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_28_7721">
+                                                        <rect width="20" height="20" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Email -->
+            <section id="email" class="max-w-[1440px] mx-auto py-5 md:py-[30px]">
+                <div class="email-container w-full h-[300px] flex flex-col justify-center items-center gap-4">
+                    <div class="title flex flex-col justify-center items-center gap-2">
+                        <h3 class="text-[1.5rem] md:text-[2.5rem] font-bold">訂閱電子報</h3>
+                        <p class="text-base font-blod opacity-70 text-center">註冊您的電子郵件地址，不錯過任何內容。<br>
+                            我們每週都會為您更新一次！</p>
+                    </div>
+                    <div class="email-input">
+                        <form action="/subscribe" method="POST">
+                            <input type="email" name="email" placeholder="輸入Email訂閱電子報" required>
+                            <button class="submit-btn" type="submit"><svg width="20" height="12" viewBox="0 0 20 12"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 6.02099C0 6.242 0.0877975 6.45397 0.244078 6.61025C0.400358 6.76653 0.61232 6.85432 0.833333 6.85432H17.155L13.5783 10.431C13.4265 10.5882 13.3425 10.7987 13.3444 11.0172C13.3463 11.2357 13.434 11.4447 13.5885 11.5992C13.743 11.7537 13.952 11.8413 14.1705 11.8432C14.389 11.8451 14.5995 11.7611 14.7567 11.6093L19.7567 6.60932C19.8338 6.53266 19.895 6.44151 19.9367 6.34111C19.9785 6.24072 20 6.13306 20 6.02432V6.02099C20 5.91266 19.9783 5.80432 19.935 5.70266C19.8935 5.60163 19.8323 5.50985 19.755 5.43266L14.755 0.432657C14.5978 0.280859 14.3873 0.196863 14.1688 0.198762C13.9503 0.200661 13.7413 0.288301 13.5868 0.442808C13.4323 0.597315 13.3447 0.806325 13.3428 1.02482C13.3409 1.24332 13.4249 1.45382 13.5767 1.61099L17.155 5.18766H0.833333C0.61232 5.18766 0.400358 5.27546 0.244078 5.43174C0.0877975 5.58802 0 5.79998 0 6.02099Z"
+                                        fill="white" />
+                                </svg></button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer
+            class="px-[40px] md:px-[80px] py-[20px] md:py-[60px] flex flex-col md:flex-row md:justify-between items-start gap-5">
+            <div class="md:order-2">
+                <div class="contact flex flex-col gap-2 md:gap-4">
+                    <h6 class="font-bold">官方信箱</h6>
+                    <ul class="flex flex-col gap-1 md:gap-2 opacity-70">
+                        <li>service@mamamoo.com.tw</li>
+                        <li>MON.-FRI. 09:00-12:00 / 13:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="md:order-1 flex flex-col gap-3 md:gap-5 items-start">
+                <h6 class="copyright text-2xl font-bold text-center">© RBW TAIWAN, Inc.</h6>
+                <div class="flex flex-wrap justify-center items-center gap-3">
+                    <a href="#"
+                        class="whitespace-nowrap footer-btn p-2 gap-2 h-[40px] min-w-[40px] flex justify-center items-center">
+                        <img src="assets/images/icon/youtube.svg" alt="">
+                    </a>
+                    <a href="#"
+                        class="whitespace-nowrap footer-btn p-2 gap-2 h-[40px] min-w-[40px] flex justify-center items-center">
+                        <img src="assets/images/icon/ig.svg" alt="">
+                    </a>
+                    <a href="#"
+                        class="whitespace-nowrap footer-btn p-2 gap-2 h-[40px] min-w-[40px] flex justify-center items-center">
+                        <img src="assets/images/icon/x.svg" alt="">
+                    </a>
+                    <a href="#"
+                        class="whitespace-nowrap footer-btn p-2 gap-2 h-[40px] min-w-[40px] flex justify-center items-center">
+                        <img src="assets/images/icon/broadcast.svg" alt="">
+                        應援方法
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconBars = document.getElementById('icon-bars');
+        const iconClose = document.getElementById('icon-close');
+
+        // 漢堡選單切換
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            iconBars.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+
+        // 點選單裡的連結後自動關閉
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                iconBars.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+            });
+        });
+    </script>
+
+    <script>
+        // 選取所有水平滑動容器
+        const scrollContainers = document.querySelectorAll('.x-scroll-container');
+
+        scrollContainers.forEach(container => {
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault(); // 阻止預設上下滾動
+                container.scrollLeft += e.deltaY; // 將垂直滾輪轉為水平滾動
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="assets/js/music-card-script.js"></script>
+</body>
+
+</html>

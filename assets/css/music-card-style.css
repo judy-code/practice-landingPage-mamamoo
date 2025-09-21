@@ -1,0 +1,71 @@
+.collection {
+  padding: 60px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collection .music-player {
+  width: calc(100% / 3 - 10px); /* 固定寬度，配合 Swiper slidesPerView */
+  aspect-ratio: 320 / 495;
+  background: var(--linear-60);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* Safari */
+  overflow: hidden;
+  padding: 1.25rem;
+  border-radius: 8px;
+  min-width: 320px;
+}
+@media screen and (max-width: 768px) {
+  .collection .music-player {
+    width: 85%;
+    min-width: 240px;
+  }
+}
+
+.collection .music-player::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--linear);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  border-radius: 8px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.music-player img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.music-player,
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 均分空間 */
+  flex-grow: 1; /* 撐滿剩餘空間 */
+  gap: 1rem;
+}
+
+.progress-bar {
+  accent-color: var(--white);
+  width: 100%;
+  height: 4px;
+  border-radius: 8px;
+  background-color: var(--white);
+}
+.pause-icon {
+  display: none;
+}
+.play-btn,
+.play-btn svg {
+  color: white;
+  transition: color 0.3s;
+}
+
+.play-btn:hover {
+  color: #9747ff;
+}
