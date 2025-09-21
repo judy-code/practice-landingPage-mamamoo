@@ -1,4 +1,4 @@
-# MAMAMOO 粉絲網站
+# 練習作品 MAMAMOO 粉絲網站
 
 這是一個專為韓國女團 MAMAMOO 粉絲打造的資訊網站，提供最新消息、暢銷商品、成員介紹與熱門歌曲等豐富內容。
 
@@ -18,7 +18,7 @@
 
 ## 使用方式
 
-- 以瀏覽器開啟 `https://judy-code.github.io/practice-landingPage-mamamoo/` 即可瀏覽網站。
+- 以瀏覽器開啟 https://judy-code.github.io/practice-landingPage-mamamoo/ 即可瀏覽網站。
 
 ---
 
